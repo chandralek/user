@@ -21,7 +21,7 @@ pipeline{
             {
               steps{
                 sh '''
-                tar -czf user-service.tgz node_modules package.json server.js
+                tar -czf user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz node_modules package.json server.js
             '''
               }
             }
