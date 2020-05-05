@@ -3,6 +3,11 @@ pipeline{
     label 'SLAVE'
   }
 
+  environment{
+    NEXUS=credentials('Nexus')
+    MAJOR_VERSION="1.0"
+  }
+
   stages{
     stage('Install npm dependencies')
             {
@@ -24,7 +29,7 @@ pipeline{
             {
               steps{
                 sh '''
-                curl -v -u admin:admin123 --upload-file user-service.tgz https://nexus.devops46.online/repository/user-service/user-service.tgz
+                curl -v -u $NEXUS_USR:$NEXUS_PSW --upload-file user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz https://nexus.devops46.online/repository/user-service/user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz
             '''
               }
             }
