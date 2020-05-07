@@ -29,7 +29,7 @@ pipeline{
             {
               steps{
                 sh '''
-                curl -v -u $NEXUS --upload-file user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz https://nexus.devops46.online/repository/user-service/user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz
+                curl -v -u -f $NEXUS --upload-file user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz https://nexus.devops46.online/repository/user-service/user-service-${MAJOR_VERSION}-${BUILD_NUMBER}.tgz
             '''
               }
             }
